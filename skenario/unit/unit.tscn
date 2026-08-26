@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://c8kmypxqv5l5w"]
+
+[ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_d17jg"]
+[ext_resource type="Script" uid="uid://u575c1t3330k" path="res://skrip/unit/drag.gd" id="2_ulxed"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ksmf"]
+radius = 12.0
+height = 32.0
+
+[node name="unit" type="Area2D" unique_id=270814877]
+
+[node name="data" type="CollisionShape2D" parent="." unique_id=1423043716]
+position = Vector2(16, 12)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CapsuleShape2D_0ksmf")
+
+[node name="gambar" type="Sprite2D" parent="data" unique_id=807496590]
+position = Vector2(0, -4)
+texture = ExtResource("1_d17jg")
+region_enabled = true
+region_rect = Rect2(32, 64, 32, 32)
+
+[node name="drag" type="Node" parent="." unique_id=1754220406 node_paths=PackedStringArray("target")]
+script = ExtResource("2_ulxed")
+target = NodePath("..")
+
+[connection signal="input_event" from="." to="drag" method="_on_unit_input_event"]

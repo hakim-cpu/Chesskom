@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://ceoq3ee4gqm4n"]
+
+[ext_resource type="PackedScene" uid="uid://dpi57d8gm3i8v" path="res://skenario/MapPlayer/MapPlayer.tscn" id="1_017pt"]
+[ext_resource type="Script" uid="uid://d0gvf3757w8uh" path="res://skrip/utama/utama.gd" id="1_h78ks"]
+[ext_resource type="Script" uid="uid://crx6fgrciu0wf" path="res://skrip/utama/kamera.gd" id="1_kybj5"]
+[ext_resource type="PackedScene" uid="uid://c8kmypxqv5l5w" path="res://skenario/unit/unit.tscn" id="2_74a0o"]
+[ext_resource type="PackedScene" uid="uid://dbuydpy1x5p16" path="res://skenario/posisi unit/posisi.tscn" id="5_84pyp"]
+[ext_resource type="Script" uid="uid://ntsbncew4h8g" path="res://skrip/posisi unit/kode_posisi2.gd" id="6_gmiau"]
+
+[node name="utama" type="Node2D" unique_id=547000403 node_paths=PackedStringArray("kamera")]
+script = ExtResource("1_h78ks")
+kamera = NodePath("kamera")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="kamera" type="Camera2D" parent="." unique_id=449306126 node_paths=PackedStringArray("target", "target2")]
+position = Vector2(320, 128)
+script = ExtResource("1_kybj5")
+target = NodePath("../posisi kamera/posisi satu")
+target2 = NodePath("../posisi kamera/posisi dua")
+
+[node name="posisi kamera" type="Node2D" parent="." unique_id=1376883838]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="posisi satu" type="Marker2D" parent="posisi kamera" unique_id=1519951120]
+position = Vector2(304, 144)
+
+[node name="posisi dua" type="Marker2D" parent="posisi kamera" unique_id=140304990]
+position = Vector2(304, 464)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1098902008]
+layer = 0
+
+[node name="ganti kamera" type="Button" parent="CanvasLayer" unique_id=2015549684]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "ganti kamera"
+
+[node name="mulai" type="Button" parent="CanvasLayer" unique_id=65630308]
+offset_left = 480.0
+offset_top = 32.0
+offset_right = 532.0
+offset_bottom = 63.0
+
+[node name="Label" type="Label" parent="CanvasLayer/mulai" unique_id=408073957]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 31.0
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2017058545]
+offset_left = 608.0
+offset_top = 224.0
+offset_right = 672.0
+offset_bottom = 288.0
+rotation = 1.5707964
+text = "batas
+"
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=405687604]
+offset_top = 288.0
+offset_right = 64.0
+offset_bottom = 352.0
+rotation = -1.5707964
+text = "batas"
+
+[node name="peta-peta" type="Node2D" parent="." unique_id=29996754]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="MapPlayer" parent="peta-peta" unique_id=2045253673 instance=ExtResource("1_017pt")]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="peta-peta/MapPlayer" unique_id=1108367280]
+offset_left = 256.0
+offset_right = 314.0
+offset_bottom = 49.0
+text = "map p1
+"
+
+[node name="MapPlayer2" parent="peta-peta" unique_id=1674296955 instance=ExtResource("1_017pt")]
+position = Vector2(0, 320)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="peta-peta/MapPlayer2" unique_id=146542482]
+offset_left = 256.0
+offset_right = 314.0
+offset_bottom = 23.0
+text = "map p2"
+
+[node name="units" type="Node" parent="." unique_id=1719957634]
+
+[node name="unit" parent="units" unique_id=270814877 instance=ExtResource("2_74a0o")]
+position = Vector2(192, 64)
+
+[node name="posisi" parent="units" unique_id=592345133 instance=ExtResource("5_84pyp")]
+position = Vector2(192, 64)
+
+[node name="posisi2" parent="units/posisi" index="1" unique_id=1537819193]
+position = Vector2(0, 320)
+
+[node name="kode posisi" parent="units/posisi" index="2" unique_id=1895451116 node_paths=PackedStringArray("target", "posisi_awal", "muncul", "kamera", "utama")]
+target = NodePath("../../unit")
+posisi_awal = NodePath("../posisi1")
+muncul = NodePath("../posisi2")
+kamera = NodePath("../../../kamera")
+utama = NodePath("../../..")
+
+[node name="unit2" parent="units" unique_id=533045538 instance=ExtResource("2_74a0o")]
+position = Vector2(384, 544)
+
+[node name="posisi2" parent="units" unique_id=288723633 instance=ExtResource("5_84pyp")]
+position = Vector2(384, 544)
+
+[node name="posisi2" parent="units/posisi2" index="1" unique_id=1537819193]
+position = Vector2(0, -320)
+
+[node name="kode posisi" parent="units/posisi2" index="2" unique_id=1895451116 node_paths=PackedStringArray("target", "posisi_awal", "muncul", "kamera", "utama")]
+script = ExtResource("6_gmiau")
+target = NodePath("../../unit2")
+posisi_awal = NodePath("../posisi1")
+muncul = NodePath("../posisi2")
+kamera = NodePath("../../../kamera")
+utama = NodePath("../../..")
+
+[connection signal="button_down" from="CanvasLayer/ganti kamera" to="kamera" method="_on_ganti_kamera_button_down"]
+[connection signal="button_down" from="CanvasLayer/mulai" to="." method="_on_mulai_button_down"]
+
+[editable path="units/unit"]
+[editable path="units/posisi"]
+[editable path="units/unit2"]
+[editable path="units/posisi2"]

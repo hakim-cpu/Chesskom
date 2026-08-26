@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dbuydpy1x5p16"]
+
+[ext_resource type="Script" uid="uid://b5gxtpl1kpt5j" path="res://skrip/posisi unit/kode_posisi.gd" id="1_r4ts7"]
+
+[node name="posisi" type="Node2D" unique_id=592345133]
+
+[node name="posisi1" type="Marker2D" parent="." unique_id=1714249291]
+
+[node name="posisi2" type="Marker2D" parent="." unique_id=1537819193]
+
+[node name="kode posisi" type="Node" parent="." unique_id=1895451116]
+script = ExtResource("1_r4ts7")
