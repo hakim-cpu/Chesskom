@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dabl6v4qvkhh2"]
+
+[ext_resource type="Script" uid="uid://da0cga5stbpee" path="res://skrip/timer/timer.gd" id="1_pqipu"]
+
+[node name="timer" type="Node2D" unique_id=1121207154]
+script = ExtResource("1_pqipu")
+metadata/_edit_lock_ = true
+
+[node name="debug" type="Timer" parent="." unique_id=672256789]
+autostart = true
+
+[node name="persiapan" type="Timer" parent="." unique_id=641521188]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="muncul" type="Timer" parent="." unique_id=1173667769]
+wait_time = 2.0
+one_shot = true
+
+[node name="pertarungan" type="Timer" parent="." unique_id=1213619592]
+wait_time = 10.0
+one_shot = true
+
+[node name="posisi_awal" type="Timer" parent="." unique_id=74629391]
+wait_time = 2.0
+one_shot = true
+
+[node name="Panel" type="Panel" parent="." unique_id=623416863]
+offset_right = 96.0
+offset_bottom = 32.0
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Panel" unique_id=1779939246]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+
+[node name="Label2" type="Label" parent="Panel" unique_id=1600274695]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+
+[node name="Label3" type="Label" parent="Panel" unique_id=467012027]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+
+[node name="Label4" type="Label" parent="Panel" unique_id=1353295328]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_right = 64.0
+offset_bottom = 32.0
+
+[connection signal="timeout" from="debug" to="." method="_on_debug_timeout"]
+[connection signal="timeout" from="persiapan" to="." method="_on_persiapan_timeout"]
+[connection signal="timeout" from="muncul" to="." method="_on_muncul_timeout"]
+[connection signal="timeout" from="pertarungan" to="." method="_on_pertarungan_timeout"]
+[connection signal="timeout" from="posisi_awal" to="." method="_on_posisi_awal_timeout"]

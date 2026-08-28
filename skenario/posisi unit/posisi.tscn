@@ -4,9 +4,14 @@
 
 [node name="posisi" type="Node2D" unique_id=592345133]
 
-[node name="posisi1" type="Marker2D" parent="." unique_id=1714249291]
+[node name="posisi" type="Marker2D" parent="." unique_id=1121232375]
 
 [node name="posisi2" type="Marker2D" parent="." unique_id=1537819193]
 
-[node name="kode posisi" type="Node" parent="." unique_id=1895451116]
+[node name="kode posisi" type="Node" parent="." unique_id=1895451116 node_paths=PackedStringArray("awal", "muncul")]
 script = ExtResource("1_r4ts7")
+awal = NodePath("../posisi")
+muncul = NodePath("../posisi2")
+
+[node name="Timer" type="Timer" parent="." unique_id=1776951864]
+one_shot = true

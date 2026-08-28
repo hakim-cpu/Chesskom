@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ceoq3ee4gqm4n"]
+[gd_scene format=4 uid="uid://ceoq3ee4gqm4n"]
 
 [ext_resource type="PackedScene" uid="uid://dpi57d8gm3i8v" path="res://skenario/MapPlayer/MapPlayer.tscn" id="1_017pt"]
 [ext_resource type="Script" uid="uid://d0gvf3757w8uh" path="res://skrip/utama/utama.gd" id="1_h78ks"]
@@ -6,47 +6,55 @@
 [ext_resource type="PackedScene" uid="uid://c8kmypxqv5l5w" path="res://skenario/unit/unit.tscn" id="2_74a0o"]
 [ext_resource type="PackedScene" uid="uid://dbuydpy1x5p16" path="res://skenario/posisi unit/posisi.tscn" id="5_84pyp"]
 [ext_resource type="Script" uid="uid://ntsbncew4h8g" path="res://skrip/posisi unit/kode_posisi2.gd" id="6_gmiau"]
+[ext_resource type="PackedScene" uid="uid://dabl6v4qvkhh2" path="res://skenario/timer/timer.tscn" id="7_0mbin"]
+[ext_resource type="PackedScene" uid="uid://cexnoieqf36o8" path="res://skenario/Grid/Grid.tscn" id="8_n1mu4"]
 
-[node name="utama" type="Node2D" unique_id=547000403 node_paths=PackedStringArray("kamera")]
+[sub_resource type="Gradient" id="Gradient_0mbin"]
+offsets = PackedFloat32Array(0, 0.0024702284, 0.8793275, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.95074147, 0.95074147, 0.95074147, 1, 0.98724604, 0.98724604, 0.98724604, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0mbin"]
+gradient = SubResource("Gradient_0mbin")
+fill_from = Vector2(0, 1)
+
+[node name="utama" type="Node2D" unique_id=547000403 node_paths=PackedStringArray("kamera", "timer")]
 script = ExtResource("1_h78ks")
 kamera = NodePath("kamera")
+timer = NodePath("CanvasLayer/timer")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
-[node name="kamera" type="Camera2D" parent="." unique_id=449306126 node_paths=PackedStringArray("target", "target2")]
-position = Vector2(320, 128)
+[node name="kamera" type="Camera2D" parent="." unique_id=449306126 node_paths=PackedStringArray("target", "target2", "utama")]
+position = Vector2(352, 128)
+scale = Vector2(4, 4)
 script = ExtResource("1_kybj5")
 target = NodePath("../posisi kamera/posisi satu")
 target2 = NodePath("../posisi kamera/posisi dua")
+utama = NodePath("..")
 
 [node name="posisi kamera" type="Node2D" parent="." unique_id=1376883838]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="posisi satu" type="Marker2D" parent="posisi kamera" unique_id=1519951120]
-position = Vector2(304, 144)
+position = Vector2(304, -16)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="posisi dua" type="Marker2D" parent="posisi kamera" unique_id=140304990]
-position = Vector2(304, 464)
+position = Vector2(-304, -16)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1098902008]
 layer = 0
 
 [node name="ganti kamera" type="Button" parent="CanvasLayer" unique_id=2015549684]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 492.0
+offset_top = 5.0
+offset_right = 603.0
+offset_bottom = 36.0
 text = "ganti kamera"
-
-[node name="mulai" type="Button" parent="CanvasLayer" unique_id=65630308]
-offset_left = 480.0
-offset_top = 32.0
-offset_right = 532.0
-offset_bottom = 63.0
-
-[node name="Label" type="Label" parent="CanvasLayer/mulai" unique_id=408073957]
-layout_mode = 0
-offset_right = 52.0
-offset_bottom = 31.0
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=2017058545]
 offset_left = 608.0
@@ -64,70 +72,112 @@ offset_bottom = 352.0
 rotation = -1.5707964
 text = "batas"
 
+[node name="timer" parent="CanvasLayer" unique_id=901947489 node_paths=PackedStringArray("target", "utama", "drag", "k_p", "k_p2") instance=ExtResource("7_0mbin")]
+position = Vector2(256, 0)
+target = NodePath("../../units/posisi2/posisi2")
+utama = NodePath("../..")
+drag = NodePath("../../units/unit2/drag")
+k_p = NodePath("../../units/posisi/kode posisi")
+k_p2 = NodePath("../../units/posisi2/kode posisi")
+
 [node name="peta-peta" type="Node2D" parent="." unique_id=29996754]
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="MapPlayer" parent="peta-peta" unique_id=2045253673 instance=ExtResource("1_017pt")]
+position = Vector2(0, -160)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="Label" type="Label" parent="peta-peta/MapPlayer" unique_id=1108367280]
-offset_left = 256.0
-offset_right = 314.0
+offset_right = 58.0
 offset_bottom = 49.0
 text = "map p1
 "
 
 [node name="MapPlayer2" parent="peta-peta" unique_id=1674296955 instance=ExtResource("1_017pt")]
-position = Vector2(0, 320)
+position = Vector2(-608, -160)
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
+[node name="tanah" parent="peta-peta/MapPlayer2/visual" parent_id_path=PackedInt32Array(1674296955, 886261946) index="0" unique_id=243152551]
+tile_map_data = PackedByteArray("AAASAAAAAQAAAAwAAAASAAEAAQAAAAwAAAAAAAgAAQAAAAwAAAABAAgAAQAAAAwAAAACAAgAAQAAAAwAAAADAAgAAQAAAAwAAAAEAAgAAQAAAAwAAAAFAAgAAQAAAAwAAAAGAAgAAQAAAAwAAAAHAAgAAQAAAAwAAAAIAAgAAQAAAAwAAAAJAAgAAQAAAAwAAAAKAAgAAQAAAAwAAAALAAgAAQAAAAwAAAAMAAgAAQAAAAwAAAANAAgAAQAAAAwAAAAOAAgAAQAAAAwAAAAPAAgAAQAAAAwAAAAQAAgAAQAAAAwAAAARAAgAAQAAAAwAAAASAAIAAQAAAAwAAAASAAMAAQAAAAwAAAASAAQAAQAAAAwAAAASAAUAAQAAAAwAAAASAAYAAQAAAAwAAAASAAcAAQAAAAwAAAASAAgAAQAAAAwAAAAAAAAAAQAAAAwAAAAAAAEAAQAAAAwAAAAAAAIAAQAAAAwAAAAAAAMAAQAAAAwAAAAAAAQAAQAAAAwAAAAAAAUAAQAAAAwAAAAAAAYAAQAAAAwAAAAAAAcAAQAAAAwAAAABAAAAAQAAAAwAAAABAAEAAQAAAAwAAAABAAIAAQAAAAwAAAABAAMAAQAAAAwAAAABAAQAAQAAAAwAAAABAAUAAQAAAAwAAAABAAYAAQAAAAwAAAABAAcAAQAAAAwAAAACAAAAAQAAAAwAAAACAAEAAQAAAAwAAAACAAIAAQAAAAwAAAACAAMAAQAAAAwAAAACAAQAAQAAAAwAAAACAAUAAQAAAAwAAAACAAYAAQAAAAwAAAACAAcAAQAAAAwAAAADAAAAAQAAAAwAAAADAAEAAQAAAAwAAAADAAIAAQAAAAwAAAADAAMAAQAAAAwAAAADAAQAAQAAAAwAAAADAAUAAQAAAAwAAAADAAYAAQAAAAwAAAADAAcAAQAAAAwAAAAEAAAAAQAAAAwAAAAEAAEAAQAAAAwAAAAEAAIAAQAAAAwAAAAEAAMAAQAAAAwAAAAEAAQAAQAAAAwAAAAEAAUAAQAAAAwAAAAEAAYAAQAAAAwAAAAEAAcAAQAAAAwAAAAFAAAAAQAAAAwAAAAFAAEAAQAAAAwAAAAFAAIAAQAAAAwAAAAFAAMAAQAAAAwAAAAFAAQAAQAAAAwAAAAFAAUAAQAAAAwAAAAFAAYAAQAAAAwAAAAFAAcAAQAAAAwAAAAGAAAAAQAAAAwAAAAGAAEAAQAAAAwAAAAGAAIAAQAAAAwAAAAGAAMAAQAAAAwAAAAGAAQAAQAAAAwAAAAGAAUAAQAAAAwAAAAGAAYAAQAAAAwAAAAGAAcAAQAAAAwAAAAHAAAAAQAAAAwAAAAHAAEAAQAAAAwAAAAHAAIAAQAAAAwAAAAHAAMAAQAAAAwAAAAHAAQAAQAAAAwAAAAHAAUAAQAAAAwAAAAHAAYAAQAAAAwAAAAHAAcAAQAAAAwAAAAIAAAAAQAAAAwAAAAIAAEAAQAAAAwAAAAIAAIAAQAAAAwAAAAIAAMAAQAAAAwAAAAIAAQAAQAAAAwAAAAIAAUAAQAAAAwAAAAIAAYAAQAAAAwAAAAIAAcAAQAAAAwAAAAJAAAAAQAAAAwAAAAJAAEAAQAAAAwAAAAJAAIAAQAAAAwAAAAJAAMAAQAAAAwAAAAJAAQAAQAAAAwAAAAJAAUAAQAAAAwAAAAJAAYAAQAAAAwAAAAJAAcAAQAAAAwAAAAKAAAAAQAAAAwAAAAKAAEAAQAAAAwAAAAKAAIAAQAAAAwAAAAKAAMAAQAAAAwAAAAKAAQAAQAAAAwAAAAKAAUAAQAAAAwAAAAKAAYAAQAAAAwAAAAKAAcAAQAAAAwAAAALAAAAAQAAAAwAAAALAAEAAQAAAAwAAAALAAIAAQAAAAwAAAALAAMAAQAAAAwAAAALAAQAAQAAAAwAAAALAAUAAQAAAAwAAAALAAYAAQAAAAwAAAALAAcAAQAAAAwAAAAMAAAAAQAAAAwAAAAMAAEAAQAAAAwAAAAMAAIAAQAAAAwAAAAMAAMAAQAAAAwAAAAMAAQAAQAAAAwAAAAMAAUAAQAAAAwAAAAMAAYAAQAAAAwAAAAMAAcAAQAAAAwAAAANAAAAAQAAAAwAAAANAAEAAQAAAAwAAAANAAIAAQAAAAwAAAANAAMAAQAAAAwAAAANAAQAAQAAAAwAAAANAAUAAQAAAAwAAAANAAYAAQAAAAwAAAANAAcAAQAAAAwAAAAOAAAAAQAAAAwAAAAOAAEAAQAAAAwAAAAOAAIAAQAAAAwAAAAOAAMAAQAAAAwAAAAOAAQAAQAAAAwAAAAOAAUAAQAAAAwAAAAOAAYAAQAAAAwAAAAOAAcAAQAAAAwAAAAPAAAAAQAAAAwAAAAPAAEAAQAAAAwAAAAPAAIAAQAAAAwAAAAPAAMAAQAAAAwAAAAPAAQAAQAAAAwAAAAPAAUAAQAAAAwAAAAPAAYAAQAAAAwAAAAPAAcAAQAAAAwAAAAQAAAAAQAAAAwAAAAQAAEAAQAAAAwAAAAQAAIAAQAAAAwAAAAQAAMAAQAAAAwAAAAQAAQAAQAAAAwAAAAQAAUAAQAAAAwAAAAQAAYAAQAAAAwAAAAQAAcAAQAAAAwAAAARAAAAAQAAAAwAAAARAAEAAQAAAAwAAAARAAIAAQAAAAwAAAARAAMAAQAAAAwAAAARAAQAAQAAAAwAAAARAAUAAQAAAAwAAAARAAYAAQAAAAwAAAARAAcAAQAAAAwAAAA=")
+
+[node name="tanaman" parent="peta-peta/MapPlayer2/visual" parent_id_path=PackedInt32Array(1674296955, 886261946) index="1" unique_id=1526592728]
+visible = false
+
 [node name="Label" type="Label" parent="peta-peta/MapPlayer2" unique_id=146542482]
-offset_left = 256.0
-offset_right = 314.0
+offset_right = 58.0
 offset_bottom = 23.0
 text = "map p2"
+
+[node name="PointLight2D" type="PointLight2D" parent="peta-peta" unique_id=1333355434]
+z_index = 3
+y_sort_enabled = true
+position = Vector2(3.0000446, -29.5)
+scale = Vector2(1946.8752, 498.43747)
+color = Color(0.35131022, 0.3513092, 0.35130876, 1)
+texture = SubResource("GradientTexture2D_0mbin")
+texture_scale = 0.01
 
 [node name="units" type="Node" parent="." unique_id=1719957634]
 
 [node name="unit" parent="units" unique_id=270814877 instance=ExtResource("2_74a0o")]
+z_index = 4096
 position = Vector2(192, 64)
+
+[node name="drag" parent="units/unit" index="1" unique_id=1754220406 node_paths=PackedStringArray("utama", "arena")]
+utama = NodePath("../../..")
+arena = NodePath("../../../Grids/panel")
 
 [node name="posisi" parent="units" unique_id=592345133 instance=ExtResource("5_84pyp")]
 position = Vector2(192, 64)
 
 [node name="posisi2" parent="units/posisi" index="1" unique_id=1537819193]
-position = Vector2(0, 320)
+gizmo_extents = 0.0
 
-[node name="kode posisi" parent="units/posisi" index="2" unique_id=1895451116 node_paths=PackedStringArray("target", "posisi_awal", "muncul", "kamera", "utama")]
+[node name="kode posisi" parent="units/posisi" index="2" unique_id=1895451116 node_paths=PackedStringArray("target", "kamera", "utama", "target2")]
 target = NodePath("../../unit")
-posisi_awal = NodePath("../posisi1")
-muncul = NodePath("../posisi2")
 kamera = NodePath("../../../kamera")
 utama = NodePath("../../..")
+target2 = NodePath("../../posisi2/kode posisi")
 
 [node name="unit2" parent="units" unique_id=533045538 instance=ExtResource("2_74a0o")]
-position = Vector2(384, 544)
+z_index = 4096
+position = Vector2(-224, 64)
+
+[node name="gambar" parent="units/unit2/data" parent_id_path=PackedInt32Array(533045538, 1423043716) index="0" unique_id=807496590]
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="drag" parent="units/unit2" index="1" unique_id=1754220406 node_paths=PackedStringArray("utama", "arena")]
+utama = NodePath("../../..")
+arena = NodePath("../../../Grids/panel2")
 
 [node name="posisi2" parent="units" unique_id=288723633 instance=ExtResource("5_84pyp")]
-position = Vector2(384, 544)
+position = Vector2(-224, 224)
 
 [node name="posisi2" parent="units/posisi2" index="1" unique_id=1537819193]
-position = Vector2(0, -320)
+position = Vector2(0, -160)
 
-[node name="kode posisi" parent="units/posisi2" index="2" unique_id=1895451116 node_paths=PackedStringArray("target", "posisi_awal", "muncul", "kamera", "utama")]
+[node name="kode posisi" parent="units/posisi2" index="2" unique_id=1895451116 node_paths=PackedStringArray("target", "kamera", "utama", "target2")]
 script = ExtResource("6_gmiau")
 target = NodePath("../../unit2")
-posisi_awal = NodePath("../posisi1")
-muncul = NodePath("../posisi2")
 kamera = NodePath("../../../kamera")
 utama = NodePath("../../..")
+target2 = NodePath("../../posisi/kode posisi")
+
+[node name="Grids" type="Node" parent="." unique_id=38866573]
+
+[node name="panel" parent="Grids" unique_id=1674616877 instance=ExtResource("8_n1mu4")]
+position = Vector2(208, 16)
+
+[node name="panel2" parent="Grids" unique_id=1787193736 instance=ExtResource("8_n1mu4")]
+position = Vector2(-400, 16)
 
 [connection signal="button_down" from="CanvasLayer/ganti kamera" to="kamera" method="_on_ganti_kamera_button_down"]
-[connection signal="button_down" from="CanvasLayer/mulai" to="." method="_on_mulai_button_down"]
 
+[editable path="peta-peta/MapPlayer"]
+[editable path="peta-peta/MapPlayer2"]
 [editable path="units/unit"]
 [editable path="units/posisi"]
 [editable path="units/unit2"]

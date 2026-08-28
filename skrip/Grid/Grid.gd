@@ -1,8 +1,9 @@
-extends TileMapLayer
+class_name Grid
+extends Node2D
 var sisi := 32
-var jumlah_kolom := 6
-var jumlah_baris := 7
-var semua_petak := []
+var jumlah_kolom := 7
+var jumlah_baris := 3
+var daftar_grid := []
 #---node lain---
 @export var cahaya: TileMapLayer
 
@@ -10,17 +11,23 @@ var semua_petak := []
 func _ready() -> void:
 	for baris in range(jumlah_baris):
 		for kolom in range(jumlah_kolom):
-			var petak = Panel.new()
-			petak.size = Vector2(sisi, sisi)
+			var grid = Area2D.new()
+			var data_grid = CollisionShape2D.new()
+			
+			data_grid.shape = RectangleShape2D.new()
+			data_grid.shape.extents = Vector2(16, 16)
 			
 			var posisi_x = kolom * sisi
 			var posisi_y = baris * sisi
 			
-			petak.position = Vector2(posisi_x, posisi_y)
+			grid.position = Vector2(posisi_x, posisi_y)
 			
-			add_child(petak)
+			data_grid.z_index = 99
 			
-			semua_petak.append(petak)
+			grid.add_child(data_grid)
+			add_child(grid)
+			
+			daftar_grid.append(grid)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

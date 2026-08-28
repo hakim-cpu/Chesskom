@@ -1,7 +1,8 @@
 extends Camera2D
 @export var target: Marker2D
 @export var target2: Marker2D
-var pindah_kamera := false
+@export var utama: Node2D
+var pindah_kamera := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,5 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_ganti_kamera_button_down() -> void:
-	pindah_kamera = not pindah_kamera
-	print(pindah_kamera)
+	if utama:
+		if utama.status == "persiapan":
+			pindah_kamera = not pindah_kamera
+	#print(pindah_kamera)

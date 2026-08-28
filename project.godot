@@ -15,6 +15,10 @@ run/main_scene="uid://ceoq3ee4gqm4n"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[debug]
+
+gdscript/warnings/directory_rules={}
+
 [display]
 
 window/size/viewport_width=608
