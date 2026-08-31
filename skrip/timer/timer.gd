@@ -21,17 +21,6 @@ func _process(delta: float) -> void:
 	$Panel/Label3.text = str(detik3)
 	$Panel/Label4.text = str(detik4)
 
-func _on_debug_timeout() -> void:
-	pass
-	#if target:
-		#print(round(target.global_position))
-	#if utama:
-		#print(utama.status)
-	#if k_p:
-		#print(round(k_p.muncul.global_position))
-	#if k_p:
-		#print(k_p.pindah)
-
 func _on_persiapan_timeout() -> void:
 	utama.status = "muncul"
 	$Panel/Label.visible = false

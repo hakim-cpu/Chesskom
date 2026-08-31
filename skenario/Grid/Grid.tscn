@@ -1,7 +1,17 @@
 [gd_scene format=3 uid="uid://cexnoieqf36o8"]
 
 [ext_resource type="Script" uid="uid://b8pw3ak4bc68" path="res://skrip/Grid/Grid.gd" id="1_h4vjv"]
+[ext_resource type="TileSet" uid="uid://bjxte3kkwagxp" path="res://Tres/Tileset/tileset.tres" id="2_6qsr7"]
 
-[node name="Grid" type="Node2D" unique_id=1674616877]
+[node name="Grid" type="Node2D" unique_id=1674616877 node_paths=PackedStringArray("cahaya")]
 z_index = 2000
 script = ExtResource("1_h4vjv")
+cahaya = NodePath("cahaya")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="cahaya" type="TileMapLayer" parent="." unique_id=482999652]
+visible = false
+position = Vector2(-16, -16)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 0)
+tile_set = ExtResource("2_6qsr7")

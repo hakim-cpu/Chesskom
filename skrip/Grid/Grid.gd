@@ -15,7 +15,7 @@ func _ready() -> void:
 			var data_grid = CollisionShape2D.new()
 			
 			data_grid.shape = RectangleShape2D.new()
-			data_grid.shape.extents = Vector2(16, 16)
+			data_grid.shape.extents = Vector2(4, 4)
 			
 			var posisi_x = kolom * sisi
 			var posisi_y = baris * sisi

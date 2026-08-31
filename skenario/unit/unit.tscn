@@ -2,10 +2,33 @@
 
 [ext_resource type="Texture2D" uid="uid://cx1ivjobggp8n" path="res://assets/sprites/rogues.png" id="1_d17jg"]
 [ext_resource type="Script" uid="uid://u575c1t3330k" path="res://skrip/unit/drag.gd" id="2_ulxed"]
+[ext_resource type="Script" uid="uid://cr8phe48rmos8" path="res://skrip/unit/pertarungan.gd" id="3_thhtb"]
+[ext_resource type="PackedScene" uid="uid://cc5yocrrsuynn" path="res://skenario/konfig/konfigurasi.tscn" id="4_y5cn6"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ksmf"]
-radius = 12.0
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5cn6"]
+size = Vector2(24, 24)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_thhtb"]
+bg_color = Color(0.4745098, 0.16078432, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r1i77"]
+bg_color = Color(0, 0.7254902, 0.21960784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4745098, 0.16078432, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_takrw"]
+bg_color = Color(0.4745098, 0.16078432, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unnra"]
+bg_color = Color(0, 0.627451, 0.83137256, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4745098, 0.16078432, 0, 1)
 
 [node name="unit" type="Area2D" unique_id=270814877]
 metadata/_edit_group_ = true
@@ -13,7 +36,7 @@ metadata/_edit_lock_ = true
 
 [node name="data" type="CollisionShape2D" parent="." unique_id=1423043716]
 position = Vector2(16, 16)
-shape = SubResource("CapsuleShape2D_0ksmf")
+shape = SubResource("RectangleShape2D_y5cn6")
 
 [node name="gambar" type="Sprite2D" parent="data" unique_id=807496590]
 position = Vector2(0, -4)
@@ -21,9 +44,47 @@ texture = ExtResource("1_d17jg")
 region_enabled = true
 region_rect = Rect2(32, 64, 32, 32)
 
-[node name="drag" type="Node" parent="." unique_id=1754220406 node_paths=PackedStringArray("target")]
+[node name="drag and drop" type="Node" parent="." unique_id=1754220406 node_paths=PackedStringArray("target", "konfig", "status")]
 script = ExtResource("2_ulxed")
 target = NodePath("..")
+konfig = NodePath("../CanvasLayer/konfigurasi")
+status = NodePath("../CanvasLayer/konfigurasi/tutup")
 
-[connection signal="area_entered" from="." to="drag" method="_on_unit_area_entered"]
-[connection signal="input_event" from="." to="drag" method="_on_unit_input_event"]
+[node name="pertarungan" type="Node" parent="." unique_id=1315729009 node_paths=PackedStringArray("my", "BarDarah", "BarStamina")]
+script = ExtResource("3_thhtb")
+my = NodePath("..")
+BarDarah = NodePath("../Bar Darah")
+BarStamina = NodePath("../Bar Stamina")
+
+[node name="Bar Darah" type="ProgressBar" parent="." unique_id=240861545]
+visible = false
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = -8.0
+theme_override_styles/background = SubResource("StyleBoxFlat_thhtb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r1i77")
+value = 60.0
+show_percentage = false
+
+[node name="Bar Stamina" type="ProgressBar" parent="." unique_id=115741412]
+visible = false
+offset_top = -9.0
+offset_right = 32.0
+offset_bottom = -5.0
+theme_override_styles/background = SubResource("StyleBoxFlat_takrw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_unnra")
+value = 40.0
+show_percentage = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1509793895]
+visible = false
+
+[node name="konfigurasi" parent="CanvasLayer" unique_id=248440257 instance=ExtResource("4_y5cn6")]
+
+[node name="tutup" parent="CanvasLayer/konfigurasi" index="4" unique_id=541043893 node_paths=PackedStringArray("canvas")]
+canvas = NodePath("../..")
+
+[connection signal="area_entered" from="." to="drag and drop" method="_on_unit_area_entered"]
+[connection signal="input_event" from="." to="drag and drop" method="_on_unit_input_event"]
+
+[editable path="CanvasLayer/konfigurasi"]

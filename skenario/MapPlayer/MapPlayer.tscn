@@ -3,6 +3,8 @@
 [ext_resource type="TileSet" uid="uid://bjxte3kkwagxp" path="res://Tres/Tileset/tileset.tres" id="1_e5bvh"]
 
 [node name="MapPlayer" type="Node2D" unique_id=2045253673]
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="visual" type="Node2D" parent="." unique_id=886261946]
 

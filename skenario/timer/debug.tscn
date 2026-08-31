@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cdhdwj824lllt"]
+
+[node name="debug" type="Timer" unique_id=1090234200]
+autostart = true

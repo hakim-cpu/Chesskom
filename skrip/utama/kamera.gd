@@ -2,6 +2,8 @@ extends Camera2D
 @export var target: Marker2D
 @export var target2: Marker2D
 @export var utama: Node2D
+@export var jendela1: Control
+@export var jendela2: Control
 var pindah_kamera := true
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +15,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not pindah_kamera and target:
 		position = target.position
+		if jendela1:
+			pass
 		
 	elif pindah_kamera and target2:
 		position = target2.position

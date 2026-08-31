@@ -6,11 +6,8 @@
 script = ExtResource("1_pqipu")
 metadata/_edit_lock_ = true
 
-[node name="debug" type="Timer" parent="." unique_id=672256789]
-autostart = true
-
 [node name="persiapan" type="Timer" parent="." unique_id=641521188]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 
@@ -19,7 +16,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="pertarungan" type="Timer" parent="." unique_id=1213619592]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="posisi_awal" type="Timer" parent="." unique_id=74629391]
@@ -59,7 +56,6 @@ offset_left = 32.0
 offset_right = 64.0
 offset_bottom = 32.0
 
-[connection signal="timeout" from="debug" to="." method="_on_debug_timeout"]
 [connection signal="timeout" from="persiapan" to="." method="_on_persiapan_timeout"]
 [connection signal="timeout" from="muncul" to="." method="_on_muncul_timeout"]
 [connection signal="timeout" from="pertarungan" to="." method="_on_pertarungan_timeout"]

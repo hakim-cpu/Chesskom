@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ras" format=3 uid="uid://xsa2na201ir6"]
+
+[ext_resource type="Script" uid="uid://na0itdu7lgf8" path="res://skrip/atribut/bluprint/ras.gd" id="1_i8v0f"]
+
+[resource]
+script = ExtResource("1_i8v0f")
+nama_ras = "manusia"
+maks_darah = 1500.0
+base_fisik = 90.0
+base_sihir = 80.0
+kecepatan_gerak = 25.0
+kecepatan_serang = 1.0
+metadata/_custom_type_script = "uid://na0itdu7lgf8"

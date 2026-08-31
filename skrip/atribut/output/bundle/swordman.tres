@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Bundle" format=3 uid="uid://br8tmq1pdvv6h"]
+
+[ext_resource type="Script" uid="uid://c6qhnsmqtnf5x" path="res://skrip/atribut/bluprint/bundle.gd" id="1_hy0v4"]
+
+[resource]
+script = ExtResource("1_hy0v4")
+nama_kelas = "swordman"
+jarak_serang = 1
+nama_senjata = "pedang"
+bonus_fisik = 1.5
+bonus_sihir = 1.0
+nama_baju = "cloak"
+metadata/_custom_type_script = "uid://c6qhnsmqtnf5x"
