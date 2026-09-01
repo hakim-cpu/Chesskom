@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://u575c1t3330k" path="res://skrip/unit/drag.gd" id="2_ulxed"]
 [ext_resource type="Script" uid="uid://cr8phe48rmos8" path="res://skrip/unit/pertarungan.gd" id="3_thhtb"]
 [ext_resource type="PackedScene" uid="uid://cc5yocrrsuynn" path="res://skenario/konfig/konfigurasi.tscn" id="4_y5cn6"]
+[ext_resource type="PackedScene" uid="uid://cm7p606lqjoq1" path="res://skenario/tas/tas.tscn" id="5_r1i77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y5cn6"]
 size = Vector2(24, 24)
@@ -50,9 +51,11 @@ target = NodePath("..")
 konfig = NodePath("../CanvasLayer/konfigurasi")
 status = NodePath("../CanvasLayer/konfigurasi/tutup")
 
-[node name="pertarungan" type="Node" parent="." unique_id=1315729009 node_paths=PackedStringArray("my", "BarDarah", "BarStamina")]
+[node name="pertarungan" type="Node" parent="." unique_id=1315729009 node_paths=PackedStringArray("my", "bund", "slot", "BarDarah", "BarStamina")]
 script = ExtResource("3_thhtb")
 my = NodePath("..")
+bund = NodePath("../CanvasLayer/tas/bundle")
+slot = NodePath("../CanvasLayer/tas/slot")
 BarDarah = NodePath("../Bar Darah")
 BarStamina = NodePath("../Bar Stamina")
 
@@ -81,10 +84,14 @@ visible = false
 
 [node name="konfigurasi" parent="CanvasLayer" unique_id=248440257 instance=ExtResource("4_y5cn6")]
 
-[node name="tutup" parent="CanvasLayer/konfigurasi" index="4" unique_id=541043893 node_paths=PackedStringArray("canvas")]
+[node name="tutup" parent="CanvasLayer/konfigurasi" index="6" unique_id=541043893 node_paths=PackedStringArray("canvas")]
 canvas = NodePath("../..")
+
+[node name="tas" parent="CanvasLayer" unique_id=1538403229 instance=ExtResource("5_r1i77")]
 
 [connection signal="area_entered" from="." to="drag and drop" method="_on_unit_area_entered"]
 [connection signal="input_event" from="." to="drag and drop" method="_on_unit_input_event"]
 
 [editable path="CanvasLayer/konfigurasi"]
+[editable path="CanvasLayer/tas"]
+[editable path="CanvasLayer/tas/bundle"]

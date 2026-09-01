@@ -1,10 +1,12 @@
 extends Node
 
-@export var ras: Ras
+var ras: Ras
 @onready var darah = %darah
 @onready var stamina = %stamina
 @onready var BarDarah = %"Bar Darah"
 @onready var BarStamina = %"Bar Stamina"
+@onready var fisik = %fisik
+@onready var sihir = %sihir
 
 func _process(delta: float) -> void:
 	if ras:
@@ -17,3 +19,6 @@ func _process(delta: float) -> void:
 		ras.darah -= 0.1
 		darah.text = str(round(ras.darah), "/", ras.maks_darah)
 		stamina.text = str(ras.stamina, "/", ras.maks_stamina)
+		
+		fisik.text = "👊" + str(ras.base_fisik)
+		sihir.text = "🔱" + str(ras.base_sihir)

@@ -4,6 +4,8 @@ extends Node
 @export var target: Area2D
 @export var my: Area2D
 @export var utama: Node2D
+@export var bund: TextureRect
+@export var slot: Control 
 #anak
 @export var BarDarah: ProgressBar
 @export var BarStamina: ProgressBar
@@ -18,7 +20,12 @@ func _ready() -> void:
 		ras.stamina = ras.maks_stamina
 
 func _process(delta: float) -> void:
-	if utama.status == "pertarungan":
+	if slot and bund:
+		if slot.position == bund.position:
+			bundle = load("res://skrip/atribut/output/bundle/swordman.tres")
+		else:
+			bundle = null
+	if utama and utama.status == "pertarungan":
 		if BarDarah and BarStamina and my and target and my.visible and target.visible:
 			BarDarah.max_value = ras.maks_darah
 			BarDarah.value = remap(ras.darah, 0, ras.maks_darah, 0, BarDarah.max_value)

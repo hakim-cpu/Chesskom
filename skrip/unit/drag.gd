@@ -20,8 +20,8 @@ func _on_unit_input_event(viewport: Node, kejadian: InputEvent, shape_idx: int) 
 		if kejadian.pressed:
 			ofset = target.global_position - target.get_global_mouse_position()
 			sentuh = true
-			arena.cahaya.visible = true
-			#konfig.visible = true
+			if arena:
+				arena.cahaya.visible = true
 			if status:
 				status.tutup = false
 			get_viewport().set_input_as_handled()

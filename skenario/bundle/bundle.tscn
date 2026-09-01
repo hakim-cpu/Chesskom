@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://waqhn0whojyx"]
+
+[ext_resource type="Texture2D" uid="uid://dxcdu20yfc72" path="res://assets/sprites/items.png" id="1_6omlg"]
+[ext_resource type="Script" uid="uid://bdip3jn2kcthr" path="res://skrip/bundle/drag_and_drop.gd" id="2_vhb21"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7b7a"]
+atlas = ExtResource("1_6omlg")
+region = Rect2(64, 352, 32, 64)
+
+[node name="bundle" type="TextureRect" unique_id=1141326720]
+offset_right = 32.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_g7b7a")
+expand_mode = 1
+
+[node name="drag and drop" type="Node" parent="." unique_id=2096216298 node_paths=PackedStringArray("my")]
+script = ExtResource("2_vhb21")
+my = NodePath("..")

@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://cc5yocrrsuynn"]
 
 [ext_resource type="Script" uid="uid://cgmpjun7g23g4" path="res://skrip/konfig/stat/status.gd" id="1_3bv1m"]
-[ext_resource type="FontFile" uid="uid://b6tq8cwufxt48" path="res://assets/font/abaddon_light.ttf" id="1_aqb5d"]
 [ext_resource type="Script" uid="uid://1tty3jy3mqjk" path="res://skrip/konfig/tutup.gd" id="1_l55bn"]
-[ext_resource type="FontFile" uid="uid://8di0jvr25vat" path="res://assets/font/m5x7.ttf" id="2_053vn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0drl6"]
 bg_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
@@ -11,27 +9,26 @@ bg_color = Color(0.4117647, 0.4117647, 0.4117647, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3bv1m"]
 bg_color = Color(0, 0.7254902, 0.21960784, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_aqb5d"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+stacked_outline_count = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8022y"]
 bg_color = Color(0.41183105, 0.41183108, 0.41183105, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sdlnc"]
 bg_color = Color(0, 0.627451, 0.83137256, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_aqb5d"]
-font = ExtResource("1_aqb5d")
+[sub_resource type="LabelSettings" id="LabelSettings_3bv1m"]
 font_size = 8
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
 stacked_outline_count = 1
 
-[sub_resource type="LabelSettings" id="LabelSettings_g7b7a"]
-font = ExtResource("2_053vn")
-font_size = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_3bv1m"]
-font = ExtResource("1_aqb5d")
-font_size = 8
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdlnc"]
-size = Vector2(480, 288)
+size = Vector2(352, 288)
 
 [node name="konfigurasi" type="Control" unique_id=248440257]
 layout_mode = 3
@@ -43,72 +40,102 @@ grow_vertical = 2
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="Bar Darah" type="ProgressBar" parent="." unique_id=1215567618]
-unique_name_in_owner = true
-z_index = 1
-layout_mode = 0
-offset_left = 489.0
-offset_top = 11.0
-offset_right = 585.0
-offset_bottom = 21.0
-theme_override_styles/background = SubResource("StyleBoxFlat_0drl6")
-theme_override_styles/fill = SubResource("StyleBoxFlat_3bv1m")
-value = 40.0
-show_percentage = false
-
-[node name="Bar Stamina" type="ProgressBar" parent="." unique_id=729624671]
-unique_name_in_owner = true
-z_index = 1
-layout_mode = 0
-offset_left = 490.0
-offset_top = 34.0
-offset_right = 586.0
-offset_bottom = 44.0
-theme_override_styles/background = SubResource("StyleBoxFlat_8022y")
-theme_override_styles/fill = SubResource("StyleBoxFlat_sdlnc")
-value = 70.0
-show_percentage = false
-
 [node name="latar belakang" type="PanelContainer" parent="." unique_id=1260547594]
+modulate = Color(1, 1, 1, 0.3137255)
 layout_mode = 0
 offset_left = 480.0
 offset_right = 608.0
 offset_bottom = 224.0
 
 [node name="status2" type="PanelContainer" parent="." unique_id=602937117]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 480.0
-offset_right = 608.0
-offset_bottom = 77.0
+offset_left = 482.0
+offset_top = 2.0
+offset_right = 606.0
+offset_bottom = 38.0
 
-[node name="GridContainer" type="GridContainer" parent="status2" unique_id=2068722341]
-layout_mode = 2
+[node name="status3" type="PanelContainer" parent="." unique_id=315538014]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 482.0
+offset_top = 40.0
+offset_right = 606.0
+offset_bottom = 80.0
 
-[node name="darah" type="Label" parent="status2/GridContainer" unique_id=1182223717]
+[node name="Bar Darah" type="ProgressBar" parent="." unique_id=1215567618]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 0
+offset_left = 496.0
+offset_top = 8.0
+offset_right = 592.0
+offset_bottom = 16.0
+theme_override_styles/background = SubResource("StyleBoxFlat_0drl6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3bv1m")
+value = 40.0
+show_percentage = false
+
+[node name="darah" type="Label" parent="Bar Darah" unique_id=1182223717]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 9.0
+offset_top = -2.0
+offset_right = 84.0
+offset_bottom = 10.0
+text = "darah"
 label_settings = SubResource("LabelSettings_aqb5d")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="spasi" type="Label" parent="status2/GridContainer" unique_id=886635530]
-layout_mode = 2
-text = "                              "
-label_settings = SubResource("LabelSettings_g7b7a")
-
-[node name="stamina" type="Label" parent="status2/GridContainer" unique_id=249236793]
+[node name="Bar Stamina" type="ProgressBar" parent="." unique_id=729624671]
 unique_name_in_owner = true
-layout_mode = 2
-text = "jdjejr eisis"
+layout_mode = 0
+offset_left = 496.0
+offset_top = 24.0
+offset_right = 592.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8022y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sdlnc")
+value = 70.0
+show_percentage = false
+
+[node name="stamina" type="Label" parent="Bar Stamina" unique_id=249236793]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 9.0
+offset_top = -2.0
+offset_right = 84.0
+offset_bottom = 10.0
+text = "stamina"
 label_settings = SubResource("LabelSettings_3bv1m")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1624048449]
+layout_mode = 0
+offset_left = 482.0
+offset_top = 40.0
+offset_right = 606.0
+offset_bottom = 80.0
+columns = 2
+
+[node name="fisik" type="Label" parent="GridContainer" unique_id=916776544]
+unique_name_in_owner = true
+modulate = Color(0.94276696, 0.9427669, 0.94276685, 1)
+z_index = 3
+layout_mode = 2
+
+[node name="sihir" type="Label" parent="GridContainer" unique_id=666468301]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="tutup" type="Node" parent="." unique_id=541043893]
 script = ExtResource("1_l55bn")
 
 [node name="tutup2" type="TouchScreenButton" parent="." unique_id=1884949135]
-position = Vector2(240, 144)
+position = Vector2(304, 144)
 shape = SubResource("RectangleShape2D_sdlnc")
 
 [node name="status" type="Node" parent="." unique_id=1322357397]
