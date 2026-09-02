@@ -34,7 +34,7 @@ func _on_unit_input_event(viewport: Node, kejadian: InputEvent, shape_idx: int) 
 func _input(kejadian: InputEvent) -> void:
 	if kejadian is InputEventScreenDrag:
 		if sentuh and utama:
-			if utama.status == "persiapan":
+			if utama.status == utama.Status.PERSIAPAN:
 				target.position = target.get_global_mouse_position() + ofset
 				if status:
 					status.tutup = true

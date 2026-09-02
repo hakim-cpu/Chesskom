@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cdhdwj824lllt"]
+
+[ext_resource type="Script" uid="uid://bnvnf3m8rc6t1" path="res://skrip/debug/debug.gd" id="1_7m65w"]
+
+[node name="debug" type="Timer" unique_id=1090234200]
+autostart = true
+script = ExtResource("1_7m65w")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

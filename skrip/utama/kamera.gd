@@ -24,6 +24,6 @@ func _process(delta: float) -> void:
 
 func _on_ganti_kamera_button_down() -> void:
 	if utama:
-		if utama.status == "persiapan":
+		if utama.status == utama.Status.PERSIAPAN:
 			pindah_kamera = not pindah_kamera
 	#print(pindah_kamera)

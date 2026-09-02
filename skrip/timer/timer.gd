@@ -22,25 +22,25 @@ func _process(delta: float) -> void:
 	$Panel/Label4.text = str(detik4)
 
 func _on_persiapan_timeout() -> void:
-	utama.status = "muncul"
+	utama.status = utama.Status.MUNCUL
 	$Panel/Label.visible = false
 	$Panel/Label2.visible = true
 	$muncul.start()
 
 func _on_muncul_timeout() -> void:
-	utama.status = "pertarungan"
+	utama.status = utama.Status.PERTARUNGAN
 	$Panel/Label2.visible = false
 	$Panel/Label3.visible = true
 	$pertarungan.start()
 
 func _on_pertarungan_timeout() -> void:
-	utama.status = "awal"
+	utama.status = utama.Status.AWAL
 	$Panel/Label3.visible = false
 	$Panel/Label4.visible = true
 	$posisi_awal.start()
 
 func _on_posisi_awal_timeout() -> void:
-	utama.status = "persiapan"
+	utama.status = utama.Status.PERSIAPAN
 	$Panel/Label4.visible = false
 	$Panel/Label.visible = true
 	$persiapan.start()

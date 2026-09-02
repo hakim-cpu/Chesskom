@@ -8,9 +8,9 @@
 [ext_resource type="Resource" uid="uid://xsa2na201ir6" path="res://skrip/atribut/output/ras/manusia1.tres" id="6_3576s"]
 [ext_resource type="Script" uid="uid://ntsbncew4h8g" path="res://skrip/posisi unit/kode_posisi2.gd" id="6_gmiau"]
 [ext_resource type="PackedScene" uid="uid://dabl6v4qvkhh2" path="res://skenario/timer/timer.tscn" id="7_0mbin"]
-[ext_resource type="Resource" uid="uid://br8tmq1pdvv6h" path="res://skrip/atribut/output/bundle/swordman.tres" id="7_3576s"]
 [ext_resource type="PackedScene" uid="uid://cexnoieqf36o8" path="res://skenario/Grid/Grid.tscn" id="8_n1mu4"]
 [ext_resource type="Resource" uid="uid://buptktpuk7acj" path="res://skrip/atribut/output/ras/manusia2.tres" id="9_fymig"]
+[ext_resource type="PackedScene" uid="uid://cdhdwj824lllt" path="res://skenario/debug/debug.tscn" id="11_3576s"]
 
 [sub_resource type="Gradient" id="Gradient_0mbin"]
 offsets = PackedFloat32Array(0, 0.0024702284, 0.8793275, 1)
@@ -133,7 +133,6 @@ arena = NodePath("../../../Grids/panel")
 target = NodePath("../../unit2")
 utama = NodePath("../../..")
 ras = ExtResource("6_3576s")
-bundle = ExtResource("7_3576s")
 
 [node name="posisi" parent="units" unique_id=592345133 instance=ExtResource("5_84pyp")]
 position = Vector2(192, 64)
@@ -162,7 +161,9 @@ arena = NodePath("../../../Grids/panel2")
 target = NodePath("../../unit")
 utama = NodePath("../../..")
 ras = ExtResource("9_fymig")
-bundle = ExtResource("7_3576s")
+
+[node name="status" parent="units/unit2/CanvasLayer/konfigurasi" parent_id_path=PackedInt32Array(533045538, 248440257) index="8" unique_id=1322357397]
+ras = ExtResource("9_fymig")
 
 [node name="posisi2" parent="units" unique_id=288723633 instance=ExtResource("5_84pyp")]
 position = Vector2(-224, 224)
@@ -185,6 +186,9 @@ position = Vector2(208, 16)
 [node name="panel2" parent="Grids" unique_id=1787193736 instance=ExtResource("8_n1mu4")]
 position = Vector2(-400, 16)
 
+[node name="debug" parent="." unique_id=1090234200 node_paths=PackedStringArray("target") instance=ExtResource("11_3576s")]
+target = NodePath("../units/unit/pertarungan")
+
 [connection signal="button_down" from="CanvasLayer/ganti kamera" to="kamera" method="_on_ganti_kamera_button_down"]
 
 [editable path="peta-peta/MapPlayer"]
@@ -192,10 +196,10 @@ position = Vector2(-400, 16)
 [editable path="units/unit"]
 [editable path="units/unit/CanvasLayer/konfigurasi"]
 [editable path="units/unit/CanvasLayer/tas"]
-[editable path="units/unit/CanvasLayer/tas/bundle"]
+[editable path="units/unit/CanvasLayer/tas/bund"]
 [editable path="units/posisi"]
 [editable path="units/unit2"]
 [editable path="units/unit2/CanvasLayer/konfigurasi"]
 [editable path="units/unit2/CanvasLayer/tas"]
-[editable path="units/unit2/CanvasLayer/tas/bundle"]
+[editable path="units/unit2/CanvasLayer/tas/bund"]
 [editable path="units/posisi2"]

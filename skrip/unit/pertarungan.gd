@@ -4,8 +4,7 @@ extends Node
 @export var target: Area2D
 @export var my: Area2D
 @export var utama: Node2D
-@export var bund: TextureRect
-@export var slot: Control 
+@export var tas: Node
 #anak
 @export var BarDarah: ProgressBar
 @export var BarStamina: ProgressBar
@@ -20,12 +19,7 @@ func _ready() -> void:
 		ras.stamina = ras.maks_stamina
 
 func _process(delta: float) -> void:
-	if slot and bund:
-		if slot.position == bund.position:
-			bundle = load("res://skrip/atribut/output/bundle/swordman.tres")
-		else:
-			bundle = null
-	if utama and utama.status == "pertarungan":
+	if utama and utama.status == utama.Status.PERTARUNGAN:
 		if BarDarah and BarStamina and my and target and my.visible and target.visible:
 			BarDarah.max_value = ras.maks_darah
 			BarDarah.value = remap(ras.darah, 0, ras.maks_darah, 0, BarDarah.max_value)
@@ -34,14 +28,25 @@ func _process(delta: float) -> void:
 			
 			BarDarah.visible = true
 			BarStamina.visible = true
-			kejar(delta)
+			
+			#kejar(delta)
 
 	elif BarDarah and BarStamina:
 		BarDarah.visible = false
 		BarStamina.visible = false
+		
+	kejar(delta)
 
 func kejar(delta):
-	if target and ras and bundle:
+	if target and ras:
 		arah_kejar = (target.position - my.position).normalized()
-		if my.position.distance_to(target.position) >= (bundle.jarak_serang * 32):
+		if my.position.distance_to(target.position) >= (ras.jarak_serang):
 			my.position += arah_kejar * ras.kecepatan_gerak * delta
+
+
+func _on_coba_je_timeout() -> void:
+	if tas:
+		if tas.kena:
+			bundle = load("res://skrip/atribut/output/bundle/swordman.tres")
+		else:
+			bundle = null

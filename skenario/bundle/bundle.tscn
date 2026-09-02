@@ -5,14 +5,14 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7b7a"]
 atlas = ExtResource("1_6omlg")
-region = Rect2(64, 352, 32, 64)
+region = Rect2(64, 512, 32, 32)
 
-[node name="bundle" type="TextureRect" unique_id=1141326720]
+[node name="bund" type="TextureRect" unique_id=1141326720]
 offset_right = 32.0
-offset_bottom = 64.0
+offset_bottom = 32.0
 texture = SubResource("AtlasTexture_g7b7a")
 expand_mode = 1
 
-[node name="drag and drop" type="Node" parent="." unique_id=2096216298 node_paths=PackedStringArray("my")]
+[node name="drag and drop" type="Node" parent="." unique_id=2096216298 node_paths=PackedStringArray("bund")]
 script = ExtResource("2_vhb21")
-my = NodePath("..")
+bund = NodePath("..")

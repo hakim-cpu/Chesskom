@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cm7p606lqjoq1"]
 
-[ext_resource type="Script" uid="uid://5xqt155l6jgy" path="res://skrip/tas/tas.gd" id="1_jcrn5"]
 [ext_resource type="PackedScene" uid="uid://waqhn0whojyx" path="res://skenario/bundle/bundle.tscn" id="2_2ui1u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0eex"]
 
 [node name="tas" type="Control" unique_id=1538403229]
 layout_mode = 3
@@ -18,19 +19,20 @@ layout_mode = 0
 offset_right = 128.0
 offset_bottom = 224.0
 
-[node name="slot" type="Control" parent="." unique_id=570355776]
-anchors_preset = 0
+[node name="Slot" type="Panel" parent="." unique_id=1696277771]
+modulate = Color(0.5527364, 0.2085504, 0.8979435, 1)
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
-offset_right = 32.0
-offset_bottom = 32.0
-script = ExtResource("1_jcrn5")
+offset_right = 64.0
+offset_bottom = 64.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t0eex")
 
-[node name="bundle" parent="." unique_id=1141326720 instance=ExtResource("2_2ui1u")]
+[node name="bund" parent="." unique_id=1141326720 instance=ExtResource("2_2ui1u")]
 z_index = 99
 layout_mode = 0
 
-[node name="drag and drop" parent="bundle" index="0" unique_id=2096216298 node_paths=PackedStringArray("slot")]
-slot = NodePath("../../slot")
+[node name="drag and drop" parent="bund" index="0" unique_id=2096216298 node_paths=PackedStringArray("slot")]
+slot = NodePath("../../Slot")
 
-[editable path="bundle"]
+[editable path="bund"]

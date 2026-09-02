@@ -51,11 +51,10 @@ target = NodePath("..")
 konfig = NodePath("../CanvasLayer/konfigurasi")
 status = NodePath("../CanvasLayer/konfigurasi/tutup")
 
-[node name="pertarungan" type="Node" parent="." unique_id=1315729009 node_paths=PackedStringArray("my", "bund", "slot", "BarDarah", "BarStamina")]
+[node name="pertarungan" type="Node" parent="." unique_id=1315729009 node_paths=PackedStringArray("my", "tas", "BarDarah", "BarStamina")]
 script = ExtResource("3_thhtb")
 my = NodePath("..")
-bund = NodePath("../CanvasLayer/tas/bundle")
-slot = NodePath("../CanvasLayer/tas/slot")
+tas = NodePath("../CanvasLayer/tas/bund/drag and drop")
 BarDarah = NodePath("../Bar Darah")
 BarStamina = NodePath("../Bar Stamina")
 
@@ -87,11 +86,21 @@ visible = false
 [node name="tutup" parent="CanvasLayer/konfigurasi" index="6" unique_id=541043893 node_paths=PackedStringArray("canvas")]
 canvas = NodePath("../..")
 
+[node name="status" parent="CanvasLayer/konfigurasi" index="8" unique_id=1322357397 node_paths=PackedStringArray("target")]
+target = NodePath("../../../pertarungan")
+
 [node name="tas" parent="CanvasLayer" unique_id=1538403229 instance=ExtResource("5_r1i77")]
+
+[node name="drag and drop" parent="CanvasLayer/tas/bund" parent_id_path=PackedInt32Array(1538403229, 1141326720) index="0" unique_id=2096216298 node_paths=PackedStringArray("pertarungan")]
+pertarungan = NodePath("../../../../pertarungan")
+
+[node name="coba je" type="Timer" parent="." unique_id=1811726649]
+autostart = true
 
 [connection signal="area_entered" from="." to="drag and drop" method="_on_unit_area_entered"]
 [connection signal="input_event" from="." to="drag and drop" method="_on_unit_input_event"]
+[connection signal="timeout" from="coba je" to="pertarungan" method="_on_coba_je_timeout"]
 
 [editable path="CanvasLayer/konfigurasi"]
 [editable path="CanvasLayer/tas"]
-[editable path="CanvasLayer/tas/bundle"]
+[editable path="CanvasLayer/tas/bund"]
