@@ -1,6 +1,6 @@
 extends Node
 
-@export var target: Node
+@export var pertarungan: Pertarungan
 @export var ras: Ras
 @export var bundle: Bundle
 @onready var darah = %darah
@@ -11,20 +11,22 @@ extends Node
 @onready var sihir = %sihir
 
 func _ready() -> void:
-	if target and target.ras:
-		ras = target.ras
+	if pertarungan:
+		ras = pertarungan.ras
+		print (pertarungan.ras)
 
 func _process(delta: float) -> void:
 	#if not target and not target.bundle:
 		#return
-	if target and target.bundle:
-		bundle = target.bundle
+	if pertarungan and pertarungan.bundle:
+		bundle = pertarungan.bundle
 
-	if target.ras and target.bundle:
-		fisik.text = "👊" + str(ras.base_fisik * bundle.bonus_fisik)
-		sihir.text = "🔱" + str(ras.base_sihir * bundle.bonus_sihir)
-
-	elif target.ras:
+	if pertarungan and pertarungan.ras and pertarungan.bundle:
+		fisik.text = "👊" + str(ras.base_fisik * bundle.m_fisik)
+		sihir.text = "🔱" + str(ras.base_sihir * bundle.m_sihir)
+		
+		
+	elif pertarungan and pertarungan.ras:
 		fisik.text = "👊" + str(ras.base_fisik)
 		sihir.text = "🔱" + str(ras.base_sihir)
 	if ras:

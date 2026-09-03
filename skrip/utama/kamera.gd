@@ -1,7 +1,7 @@
 extends Camera2D
 @export var target: Marker2D
 @export var target2: Marker2D
-@export var utama: Node2D
+@export var utama: Utama
 @export var jendela1: Control
 @export var jendela2: Control
 var pindah_kamera := true

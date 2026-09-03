@@ -1,8 +1,6 @@
 extends Node
 
-@export var target: Marker2D
-@export var utama: Node2D
-@export var drag: Node
+@export var utama: Utama
 @export var k_p: Node
 @export var k_p2: Node
 var detik

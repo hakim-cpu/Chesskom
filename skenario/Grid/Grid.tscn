@@ -8,7 +8,6 @@ z_index = 2000
 script = ExtResource("1_h4vjv")
 cahaya = NodePath("cahaya")
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="cahaya" type="TileMapLayer" parent="." unique_id=482999652]
 visible = false

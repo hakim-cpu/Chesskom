@@ -2,17 +2,23 @@
 
 [ext_resource type="Texture2D" uid="uid://dxcdu20yfc72" path="res://assets/sprites/items.png" id="1_6omlg"]
 [ext_resource type="Script" uid="uid://bdip3jn2kcthr" path="res://skrip/bundle/drag_and_drop.gd" id="2_vhb21"]
+[ext_resource type="Script" uid="uid://cg5gmoaebv7ox" path="res://skrip/bundle/bundle/swordman.gd" id="3_gey21"]
+[ext_resource type="Resource" uid="uid://br8tmq1pdvv6h" path="res://skrip/atribut/output/bundle/swordman.tres" id="4_du8ds"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7b7a"]
 atlas = ExtResource("1_6omlg")
 region = Rect2(64, 512, 32, 32)
 
 [node name="bund" type="TextureRect" unique_id=1141326720]
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 48.0
+offset_bottom = 48.0
 texture = SubResource("AtlasTexture_g7b7a")
 expand_mode = 1
 
 [node name="drag and drop" type="Node" parent="." unique_id=2096216298 node_paths=PackedStringArray("bund")]
 script = ExtResource("2_vhb21")
 bund = NodePath("..")
+
+[node name="swordman" type="Node" parent="." unique_id=1349251926]
+script = ExtResource("3_gey21")
+bundle = ExtResource("4_du8ds")
