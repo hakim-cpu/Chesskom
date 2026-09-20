@@ -1,10 +1,11 @@
 extends Node
+class_name KodePosisi2
 @export var target: Area2D
 @export var awal: Marker2D
 @export var muncul: Marker2D
-@export var kamera: Camera2D
-@export var utama: Node2D
-@export var target2: Node
+@export var kamera: Kamera
+@export var utama: Utama
+@export var target2: KodePosisi
 var pindah := false
 
 func _process(delta: float) -> void:
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 			muncul.global_position = coba
 			awal.global_position = target.global_position
 		if utama.status == utama.Status.MUNCUL and not target2.pindah:
-			if not kamera.pindah_kamera:
+			if not kamera.pindah:
 				target.global_position = muncul.global_position
 		if utama.status == utama.Status.AWAL:
 			target.global_position = awal.global_position

@@ -9,8 +9,8 @@ extends Node
 var sentuh := false
 var ofset
 var awal: Vector2
-
 var grid_tersentuh: Area2D = null
+var pertama_sentuh: int
 
 func _ready() -> void:
 	pass
@@ -18,28 +18,31 @@ func _ready() -> void:
 func _on_unit_input_event(viewport: Node, kejadian: InputEvent, shape_idx: int) -> void:
 	if kejadian is InputEventScreenTouch:
 		if kejadian.pressed:
-			ofset = target.global_position - target.get_global_mouse_position()
-			sentuh = true
-			if grid:
-				grid.cahaya.visible = true
-			if status:
-				status.tutup = false
-			get_viewport().set_input_as_handled()
+			pertama_sentuh = Time.get_ticks_msec()
+			if utama.status == utama.Status.PERSIAPAN:
+				ofset = target.global_position - target.get_global_mouse_position()
+				sentuh = true
+				if grid:
+					grid.cahaya.visible = true
+				get_viewport().set_input_as_handled()
 
 		else:
 			sentuh = false
+			var lama_sentuh = Time.get_ticks_msec() - pertama_sentuh
+			if lama_sentuh < 200:
+				if status:
+					status.tutup = false
 			if grid:
 				grid.cahaya.visible = false
-			if grid_tersentuh:
+			if grid_tersentuh and utama and utama.status == utama.Status.PERSIAPAN:
 				target.global_position = grid_tersentuh.global_position - Vector2(16, 16)
 
 func _input(kejadian: InputEvent) -> void:
 	if kejadian is InputEventScreenDrag:
 		if sentuh and utama:
-			if utama.status == utama.Status.PERSIAPAN:
-				target.position = target.get_global_mouse_position() + ofset
-				if status:
-					status.tutup = true
+			target.position = target.get_global_mouse_position() + ofset
+			if status:
+				status.tutup = true
 #---cahaya----
 			if grid and grid_tersentuh:
 				grid.cahaya.global_position = grid_tersentuh.global_position - Vector2(16, 16)

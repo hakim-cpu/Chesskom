@@ -92,12 +92,12 @@ pertarungan = NodePath("../../../pertarungan")
 
 [node name="tas" parent="CanvasLayer" unique_id=1538403229 instance=ExtResource("5_r1i77")]
 
-[node name="coba je" type="Timer" parent="." unique_id=1811726649]
-autostart = true
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1044992812]
 
 [connection signal="area_entered" from="." to="drag and drop" method="_on_unit_area_entered"]
 [connection signal="input_event" from="." to="drag and drop" method="_on_unit_input_event"]
-[connection signal="timeout" from="coba je" to="pertarungan" method="_on_coba_je_timeout"]
+[connection signal="kena" from="CanvasLayer/tas/bund/drag and drop" to="pertarungan" method="_on_drag_and_drop_kena"]
+[connection signal="tidak_kena" from="CanvasLayer/tas/bund/drag and drop" to="pertarungan" method="_on_drag_and_drop_tidak_kena"]
 
 [editable path="CanvasLayer/konfigurasi"]
 [editable path="CanvasLayer/tas"]

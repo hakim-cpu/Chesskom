@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d0gckyg7idv5t"]
+
+[node name="gatcha" type="Control" unique_id=1092746505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1386012285]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 480.0
+offset_bottom = 192.0

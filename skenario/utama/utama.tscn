@@ -19,10 +19,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.95074147, 0.95074147, 0.95074147, 1, 0.9
 gradient = SubResource("Gradient_0mbin")
 fill_from = Vector2(0, 1)
 
-[node name="utama" type="Node2D" unique_id=547000403 node_paths=PackedStringArray("kamera", "timer")]
+[node name="utama" type="Node2D" unique_id=547000403]
 script = ExtResource("1_h78ks")
-kamera = NodePath("kamera")
-timer = NodePath("CanvasLayer/timer")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -106,6 +104,12 @@ grid = NodePath("../../../grid-grid/Grid")
 target = NodePath("../../unit2")
 utama = NodePath("../../..")
 ras = ExtResource("6_3576s")
+
+[node name="bund" parent="units/unit/CanvasLayer/tas" parent_id_path=PackedInt32Array(270814877, 1538403229) index="2" unique_id=1141326720]
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 112.0
+offset_bottom = 144.0
 
 [node name="posisi" parent="units" unique_id=592345133 instance=ExtResource("5_84pyp")]
 position = Vector2(192, 64)
